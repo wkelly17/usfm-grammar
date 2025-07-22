@@ -1,9 +1,9 @@
 import {defineConfig} from "@rslib/core";
 
 export default defineConfig({
-  source: {
-    assetsInclude: [/\.wasm$/],
-  },
+  // source: {
+  //   assetsInclude: [/\.wasm$/],
+  // },
 
   lib: [
     {
@@ -19,6 +19,16 @@ export default defineConfig({
         distPath: {
           root: "dist/web",
         },
+        copy: [
+          {
+            from: "./src/wasm/tree-sitter.wasm",
+            to: "wasm/tree-sitter.wasm",
+          },
+          {
+            from: "./src/wasm/tree-sitter-usfm3.wasm",
+            to: "wasm/tree-sitter-usfm3.wasm",
+          },
+        ],
       },
       source: {
         entry: {

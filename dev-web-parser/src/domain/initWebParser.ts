@@ -1,16 +1,22 @@
 import {Language, Parser} from "web-tree-sitter";
-import treeSitterWasm from "../wasm/tree-sitter.wasm?url";
-import usfm3 from "../wasm/tree-sitter-usfm3.wasm?url";
+// import treeSitterWasm from "../wasm/tree-sitter.wasm?url";
+// import usfm3 from "../wasm/tree-sitter-usfm3.wasm?url";
 
-export async function initUsfmParserWeb() {
+export async function initUsfmParserWeb({
+  treeSitterPath,
+  usfmPath,
+}: {
+  treeSitterPath: string;
+  usfmPath: string;
+}) {
   try {
     await Parser.init({
       locateFile(_scriptName: string, _scriptDirectory: string) {
-        return treeSitterWasm;
+        return treeSitterPath;
       },
     });
     const parser = new Parser();
-    const language = await Language.load(usfm3);
+    const language = await Language.load(usfmPath);
     parser.setLanguage(language);
     return {parser, language};
   } catch (error) {
