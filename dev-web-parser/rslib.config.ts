@@ -4,6 +4,7 @@ export default defineConfig({
   // source: {
   //   assetsInclude: [/\.wasm$/],
   // },
+
   lib: [
     {
       format: "esm",
@@ -11,6 +12,7 @@ export default defineConfig({
       dts: {
         bundle: true,
       },
+
       output: {
         target: "web",
         sourceMap: false,
@@ -26,6 +28,10 @@ export default defineConfig({
           {
             from: "./src/wasm/tree-sitter-usfm3.wasm",
             to: "wasm/tree-sitter-usfm3.wasm",
+          },
+          {
+            from: "./src/wasm.d.ts",
+            to: "wasm/wasm.d.ts",
           },
         ],
       },
