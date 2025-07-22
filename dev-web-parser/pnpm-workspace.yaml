@@ -1,0 +1,5 @@
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+  - tree-sitter
+  - tree-sitter-usfm3
