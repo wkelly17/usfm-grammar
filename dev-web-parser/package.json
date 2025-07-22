@@ -17,7 +17,8 @@
     "dev": "rslib build --watch",
     "format": "biome format --write",
     "test": "vitest run",
-    "flame": "0x -- tsx dev.ts"
+    "flame": "0x -- tsx dev.ts",
+    "prepare": "pnpm run build"
   },
   "devDependencies": {
     "0x": "^6.0.0",
