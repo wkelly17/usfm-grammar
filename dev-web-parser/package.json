@@ -7,11 +7,13 @@
       "types": "./dist/web/index.d.ts",
       "import": "./dist/web/index.js"
     },
-    "./wasm/tree-sitter.wasm": {
-      "import": "./dist/web/wasm/tree-sitter.wasm"
+    "./wasm/tree-sitter.wasm?url": {
+      "import": "./dist/web/wasm/tree-sitter.wasm",
+      "types": "./dist/web/wasm/wasm.d.ts"
     },
-    "./wasm/tree-sitter-usfm3.wasm": {
-      "import": "./dist/web/wasm/tree-sitter-usfm3.wasm"
+    "./wasm/tree-sitter-usfm3.wasm?url": {
+      "import": "./dist/web/wasm/tree-sitter-usfm3.wasm",
+      "types": "./dist/web/wasm/wasm.d.ts"
     }
   },
   "files": [
