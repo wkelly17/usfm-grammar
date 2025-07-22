@@ -1,7 +1,8 @@
 import {Language, Parser} from "web-tree-sitter";
-// import treeSitterWasm from "../wasm/tree-sitter.wasm?url";
-// import usfm3 from "../wasm/tree-sitter-usfm3.wasm?url";
 
+declare module "*.wasm?url" {
+  const content: string;
+}
 export async function initUsfmParserWeb({
   treeSitterPath,
   usfmPath,

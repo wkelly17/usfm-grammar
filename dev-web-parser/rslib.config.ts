@@ -1,10 +1,9 @@
 import {defineConfig} from "@rslib/core";
 
 export default defineConfig({
-  // source: {
-  //   assetsInclude: [/\.wasm$/],
-  // },
-
+  source: {
+    assetsInclude: [/\.wasm$/],
+  },
   lib: [
     {
       format: "esm",
@@ -23,15 +22,11 @@ export default defineConfig({
         copy: [
           {
             from: "./src/wasm/tree-sitter.wasm",
-            to: "wasm/tree-sitter.wasm",
+            to: "../wasm/tree-sitter.wasm",
           },
           {
             from: "./src/wasm/tree-sitter-usfm3.wasm",
-            to: "wasm/tree-sitter-usfm3.wasm",
-          },
-          {
-            from: "./src/wasm.d.ts",
-            to: "wasm/wasm.d.ts",
+            to: "../wasm/tree-sitter-usfm3.wasm",
           },
         ],
       },
