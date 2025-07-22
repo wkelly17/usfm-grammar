@@ -7,7 +7,8 @@
   "scripts": {
     "test": "tree-sitter test",
     "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip"
+    "prebuildify": "prebuildify --napi --strip",
+    "buildWasm": "tree-sitter build --wasm"
   },
   "repository": {
     "type": "git",
@@ -39,12 +40,12 @@
   },
   "homepage": "https://github.com/Bridgeconn/usfm-grammar/tree-sitter-usfm#readme",
   "dependencies": {
-    "tree-sitter": "^0.21.1",
-    "node-addon-api": "^7.1.0",
-    "node-gyp-build": "^4.8.0"
+    "node-addon-api": "^8.5.0",
+    "node-gyp-build": "^4.8.4",
+    "tree-sitter": "^0.25.0"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.1"
+    "tree-sitter": "^0.25.0"
   },
   "peerDependenciesMeta": {
     "tree_sitter": {
@@ -52,8 +53,8 @@
     }
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.22.6",
-    "prebuildify": "^6.0.0"
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.25.8"
   },
   "tree-sitter": [
     {

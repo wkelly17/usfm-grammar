@@ -1,0 +1,36 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "usfm3",
+      "camelcase": "usfm3",
+      "title": "USFM3",
+      "scope": "source.usfm3",
+      "file-types": ["usfm"],
+      "injection-regex": "^test_val$",
+      "class-name": "TreeSitterTestVal"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "USFM3 grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Will Kelly"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-usfm3"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
