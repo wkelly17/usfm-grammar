@@ -8,10 +8,10 @@
       "import": "./dist/web/index.js"
     },
     "./wasm/tree-sitter.wasm": {
-      "import": "./dist/wasm/tree-sitter.wasm"
+      "import": "./dist/web/wasm/tree-sitter.wasm"
     },
     "./wasm/tree-sitter-usfm3.wasm": {
-      "import": "./dist/wasm/tree-sitter-usfm3.wasm"
+      "import": "./dist/web/wasm/tree-sitter-usfm3.wasm"
     }
   },
   "files": [

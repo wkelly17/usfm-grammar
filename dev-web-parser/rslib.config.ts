@@ -4,7 +4,6 @@ export default defineConfig({
   // source: {
   //   assetsInclude: [/\.wasm$/],
   // },
-
   lib: [
     {
       format: "esm",
