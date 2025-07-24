@@ -15,3 +15,4 @@ export * from "./domain/usj/utils";
 export * from "./domain/usx/usxToUsfm";
 
 export type {USJ, UsjMarkerNode, UsjNode} from "./customTypes";
+export type {Parser, Language} from "web-tree-sitter";
