@@ -13,3 +13,5 @@ export * from "./domain/usj/usjToUsfm";
 export * from "./domain/usj/utils";
 // usx
 export * from "./domain/usx/usxToUsfm";
+
+export type {USJ, UsjMarkerNode, UsjNode} from "./customTypes";
