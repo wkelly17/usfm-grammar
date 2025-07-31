@@ -43,7 +43,7 @@ beforeAll(async () => {
   for (const filepath of allUsfmFiles) {
     if (isValidUsfm[filepath]) {
       const usfmText = await fs.readFile(filepath, "utf8");
-      const {tree, rootNode, errors, errorMsg} = parseUSFM({
+      const {tree, errors, errorMsg} = parseUSFM({
         usfm: usfmText,
         parser,
       });

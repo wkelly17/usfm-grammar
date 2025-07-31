@@ -31,7 +31,7 @@ beforeAll(async () => {
         parser = result.parser;
         language = result.language;
         const usfmText = await fs.readFile(filepath, "utf8");
-        const {tree, rootNode, errors, errorMsg} = parseUSFM({
+        const {tree, errors, errorMsg} = parseUSFM({
           usfm: usfmText,
           parser,
         });

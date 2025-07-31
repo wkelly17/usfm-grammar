@@ -41,7 +41,6 @@ describe("parseUSFM", () => {
 
     // Check the structure of the result
     expect(result).toHaveProperty("tree");
-    expect(result).toHaveProperty("rootNode");
     expect(result).toHaveProperty("errors");
     expect(result).toHaveProperty("errorMsg");
   });

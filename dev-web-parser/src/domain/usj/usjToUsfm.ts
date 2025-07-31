@@ -46,6 +46,7 @@ function convertUsjUsfm({
   if (!usfm) {
     usfm = "";
   }
+  const isMarkerNode = isUsjMarkerNode(usjObj);
   if (usjObj.type === "optbreak") {
     if (
       usfm &&
@@ -57,10 +58,10 @@ function convertUsjUsfm({
     usfm += "// ";
     return usfm;
   }
-  if (usjObj.type === "ref" && isUsjMarkerNode(usjObj)) {
+  if (usjObj.type === "ref" && isMarkerNode) {
     usjObj.marker = "ref";
   }
-  if (!NO_USFM_USJ_TYPES.includes(usjObj.type) && isUsjMarkerNode(usjObj)) {
+  if (!NO_USFM_USJ_TYPES.includes(usjObj.type) && isMarkerNode) {
     usfm += "\\";
     if (nested && usjObj.type === "char") {
       usfm += "+";
@@ -68,27 +69,36 @@ function convertUsjUsfm({
     usfm += `${usjObj.marker} `;
   }
   ["code", "number", "caller"].forEach((key) => {
-    if (isUsjMarkerNode(usjObj) && usjObj[key]) {
+    if (isMarkerNode && usjObj[key]) {
       usfm += `${usjObj[key]} `;
     }
   });
-  if (isUsjMarkerNode(usjObj) && usjObj.category) {
+  if (isMarkerNode && usjObj.category) {
     usfm += `\\cat ${usjObj.category}\\cat*\n`;
   }
-  if (isUsjMarkerNode(usjObj) && usjObj.altnumber) {
+  if (isMarkerNode && usjObj.altnumber) {
     if (usjObj.marker === "c") {
       usfm += `\\ca ${usjObj.altnumber} \\ca*\n`;
     } else if (usjObj.marker === "v") {
       usfm += `\\va ${usjObj.altnumber} \\va* `;
     }
   }
-  if (isUsjMarkerNode(usjObj) && usjObj.pubnumber) {
+  if (isMarkerNode && usjObj.pubnumber) {
     if (usjObj.marker === "c") {
       usfm += `\\cp ${usjObj.pubnumber}\n`;
     } else if (usjObj.marker === "v") {
       usfm += `\\vp ${usjObj.pubnumber} \\vp* `;
     }
   }
+
+  if (
+    !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
+    usfm?.length &&
+    usfm?.[usfm.length - 1] !== "\n"
+  ) {
+    usfm += "\n";
+  }
+
   if (Array.isArray(usjObj.content)) {
     usjObj.content.forEach((item) => {
       if (typeof item === "string") {
@@ -105,7 +115,7 @@ function convertUsjUsfm({
 
   let attributes: string[] = [];
   Object.keys(usjObj).forEach((key) => {
-    if (!NON_ATTRIB_USJ_KEYS.includes(key) && isUsjMarkerNode(usjObj)) {
+    if (!NON_ATTRIB_USJ_KEYS.includes(key) && isMarkerNode) {
       let lhs = key;
       if (key === "file") {
         lhs = "src";
@@ -118,14 +128,14 @@ function convertUsjUsfm({
     usfm += `|${attributes.join(" ")}`;
   }
 
-  if (CLOSING_USJ_TYPES.includes(usjObj.type) && isUsjMarkerNode(usjObj)) {
+  if (CLOSING_USJ_TYPES.includes(usjObj.type) && isMarkerNode) {
     usfm += `\\`;
     if (nested && usjObj.type === "char") {
       usfm += "+";
     }
     usfm += `${usjObj.marker}* `;
   }
-  if (usjObj.type === "ms" && isUsjMarkerNode(usjObj)) {
+  if (usjObj.type === "ms" && isMarkerNode) {
     if ("sid" in usjObj) {
       if (attributes.length == 0) {
         usfm += "|";
@@ -137,12 +147,7 @@ function convertUsjUsfm({
   if (usjObj.type === "sidebar") {
     usfm += "\\esbe";
   }
-  if (
-    !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
-    usfm?.[usfm.length - 1] !== "\n"
-  ) {
-    usfm += "\n";
-  }
+
   return usfm || "";
 }
 
