@@ -116,8 +116,7 @@ function convertUsjUsfm({
   if (
     !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
     usfm?.length &&
-    usfm?.[usfm.length - 1] !== "\n" &&
-    !isNewLineFirst
+    usfm?.[usfm.length - 1] !== "\n"
   ) {
     usfm += "\n";
   }
