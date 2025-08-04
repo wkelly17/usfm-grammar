@@ -29,3 +29,22 @@ export const NON_ATTRIB_USX_KEYS = [
 ];
 export const NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell"];
 export const NO_NEWLINE_USX_TYPES = ["char", "note", "verse", "cell"];
+export const IMMEDIATE_NEWLINE_USJ_TYPES = [
+  "p",
+  "m",
+  "po",
+  "cls",
+  "pr",
+  "pc",
+  "pm",
+  "pmo",
+  "pmc",
+  "pmr",
+  "pi#",
+  "mi",
+  "lit",
+  "nb",
+  "b",
+  "ib",
+  "ie",
+];

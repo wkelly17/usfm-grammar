@@ -1,6 +1,7 @@
 import {USJ, UsjMarkerNode} from "../../customTypes";
 import {
   CLOSING_USJ_TYPES,
+  IMMEDIATE_NEWLINE_USJ_TYPES,
   NO_NEWLINE_USJ_TYPES,
   NO_USFM_USJ_TYPES,
   NON_ATTRIB_USJ_KEYS,
@@ -91,11 +92,11 @@ function convertUsjUsfm({
     }
   }
 
-  if (
-    !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
+  const isNewLineFirst =
+    !IMMEDIATE_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
     usfm?.length &&
-    usfm?.[usfm.length - 1] !== "\n"
-  ) {
+    usfm?.[usfm.length - 1] !== "\n";
+  if (isNewLineFirst) {
     usfm += "\n";
   }
 
@@ -111,6 +112,15 @@ function convertUsjUsfm({
         });
       }
     });
+  }
+
+  if (
+    !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
+    usfm?.length &&
+    usfm?.[usfm.length - 1] !== "\n" &&
+    !isNewLineFirst
+  ) {
+    usfm += "\n";
   }
 
   let attributes: string[] = [];
