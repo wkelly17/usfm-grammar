@@ -92,10 +92,9 @@ function convertUsjUsfm({
     }
   }
 
+  const marker = isMarkerNode ? usjObj.marker : false;
   const isNewLineFirst =
-    !IMMEDIATE_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
-    usfm?.length &&
-    usfm?.[usfm.length - 1] !== "\n";
+    isMarkerNode && marker && !IMMEDIATE_NEWLINE_USJ_TYPES.includes(marker);
   if (isNewLineFirst) {
     usfm += "\n";
   }
